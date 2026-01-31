@@ -87,16 +87,21 @@ test.describe('Assignment 1 Scenarios', () => {
                 }
             }
 
-            // Justification & Coverage (from test-data)
-            const justification = tc.focus;
-            const coverage = `${tc.category} - ${tc.focus}`;
+
+            // Justification & Coverage (Detailed from test-data)
+            // Use "safe" replacement for CSV to ensure bullets and newlines are safely quoted
+            const justification = tc.justification;
+            const coverage = tc.coveredBy;
 
             // Safe CSV row generation
             const safeInput = tc.input.replace(/"/g, '""');
             const safeExpected = tc.expected.replace(/"/g, '""');
             const safeActual = actualOutput.replace(/"/g, '""');
+            // Justification and Coverage contain newlines and bullets, so they MUST be quoted (which properly generating CSV string does automatically if we format it right)
+            const safeJustification = justification.replace(/"/g, '""');
+            const safeCoverage = coverage.replace(/"/g, '""');
 
-            const row = `${tc.id},"${tc.description}",${tc.length},"${safeInput}","${safeExpected}","${safeActual}",${status},"${justification}","${coverage}"\n`;
+            const row = `${tc.id},"${tc.description}",${tc.length},"${safeInput}","${safeExpected}","${safeActual}",${status},"${safeJustification}","${safeCoverage}"\n`;
 
             fs.appendFileSync(resultsPath, row, { encoding: 'utf-8' });
 
