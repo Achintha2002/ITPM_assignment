@@ -1,5 +1,5 @@
 # Assignment 1 - Singlish to Sinhala Automation
-**Student ID**: IT23779570
+**Student ID**: IT3779570
 **Repository**: https://github.com/sandundimantha/ITPM-Assignment-01-last.git
 
 This project contains Playwright automation tests for the SwiftTranslator system (Option 1).
